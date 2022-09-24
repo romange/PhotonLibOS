@@ -182,6 +182,10 @@ set_target_properties(photon_static PROPERTIES OUTPUT_NAME photon)
 # Third party
 add_subdirectory(third_party)
 
+find_package(gflags REQUIRED)
+
+add_subdirectory(examples)
+
 # Build test cases
 if (BUILD_TESTING)
     include(CTest)
@@ -196,7 +200,6 @@ if (BUILD_TESTING)
 
     set(testing_libs ${GTEST_BOTH_LIBRARIES} ${GMOCK_LIBRARIES} ${GFLAGS_LIBRARIES})
 
-    add_subdirectory(examples)
     add_subdirectory(fs/test)
     add_subdirectory(io/test)
     add_subdirectory(net/test)
